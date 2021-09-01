@@ -2,8 +2,8 @@ package dev.masa.masuitecore.bungee;
 
 import dev.masa.masuitecore.bungee.chat.Formator;
 import dev.masa.masuitecore.core.channels.BungeePluginChannel;
-import dev.masa.masuitecore.core.objects.Location;
 import dev.masa.masuitecore.core.configuration.BungeeConfiguration;
+import dev.masa.masuitecore.core.objects.Location;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -13,8 +13,8 @@ import java.util.UUID;
 
 public class Utils {
 
-    private BungeeConfiguration config = new BungeeConfiguration();
-    private Formator formator = new Formator();
+    private final BungeeConfiguration config = new BungeeConfiguration();
+    private final Formator formator = new Formator();
 
 
     /**
@@ -76,9 +76,10 @@ public class Utils {
 
     /**
      * Apply cooldown for player
+     *
      * @param plugin plugin to use
-     * @param uuid uuid of the player
-     * @param type type of the cooldown
+     * @param uuid   uuid of the player
+     * @param type   type of the cooldown
      */
     public void applyCooldown(Plugin plugin, UUID uuid, String type) {
         new BungeePluginChannel(plugin, plugin.getProxy().getPlayer(uuid).getServer().getInfo(), "MaSuiteCore", "ApplyCooldown", type, uuid.toString()).send();

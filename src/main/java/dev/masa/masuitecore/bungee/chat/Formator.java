@@ -8,6 +8,9 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author Masa
+ */
 public class Formator {
 
     /**
@@ -27,7 +30,9 @@ public class Formator {
      * @param message message to send
      */
     public void sendMessage(ProxiedPlayer player, String message) {
-        if(message.isEmpty()) return;
+        if (message.isEmpty()) {
+            return;
+        }
         if (new Utils().isOnline(player)) {
             player.sendMessage(MDChat.getMessageFromString(colorize(message)));
         }

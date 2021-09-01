@@ -13,8 +13,8 @@ import org.bukkit.plugin.PluginManager;
 
 public class MaSuiteCommand extends BaseCommand {
 
-    private MaSuiteCore plugin;
-    private Formator formator = new Formator();
+    private final MaSuiteCore plugin;
+    private final Formator formator = new Formator();
 
     public MaSuiteCommand(MaSuiteCore plugin) {
         this.plugin = plugin;

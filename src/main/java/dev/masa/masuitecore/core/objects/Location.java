@@ -98,6 +98,7 @@ public class Location {
 
     /**
      * Convert {@link Location} to string
+     *
      * @deprecated
      */
     public String toString() {

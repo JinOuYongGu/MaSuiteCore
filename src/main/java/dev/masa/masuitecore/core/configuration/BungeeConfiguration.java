@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class BungeeConfiguration {
 
-    private HashMap<String, Configuration> configs = new HashMap<>();
+    private final HashMap<String, Configuration> configs = new HashMap<>();
     private Configuration configuration;
     private File file;
 

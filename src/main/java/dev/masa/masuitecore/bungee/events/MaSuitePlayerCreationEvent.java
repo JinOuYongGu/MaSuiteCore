@@ -9,7 +9,7 @@ public class MaSuitePlayerCreationEvent extends Event implements Cancellable {
 
     private boolean isCancelled;
     @Getter
-    private MaSuitePlayer player;
+    private final MaSuitePlayer player;
 
     public MaSuitePlayerCreationEvent(MaSuitePlayer player) {
         this.isCancelled = false;

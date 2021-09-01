@@ -12,7 +12,7 @@ public class BukkitConfiguration {
 
     private JavaPlugin plugin;
 
-    private HashMap<String, FileConfiguration> configs = new HashMap<>();
+    private final HashMap<String, FileConfiguration> configs = new HashMap<>();
 
     /**
      * An empty constructor for BukkitConfiguration

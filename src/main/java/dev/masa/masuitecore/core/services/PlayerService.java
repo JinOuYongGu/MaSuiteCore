@@ -15,10 +15,9 @@ import java.util.*;
 
 public class PlayerService {
 
-    Dao<MaSuitePlayer, UUID> playerDao;
     public HashMap<UUID, MaSuitePlayer> players = new HashMap<>();
-
-    private MaSuiteCore plugin;
+    Dao<MaSuitePlayer, UUID> playerDao;
+    private final MaSuiteCore plugin;
 
     @SneakyThrows
     public PlayerService(MaSuiteCore plugin) {

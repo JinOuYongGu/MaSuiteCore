@@ -1,12 +1,12 @@
 package dev.masa.masuitecore.bungee;
 
-import dev.masa.masuitecore.core.Updator;
-import dev.masa.masuitecore.core.services.DatabaseService;
-import dev.masa.masuitecore.core.services.PlayerService;
+import dev.masa.masuitecore.bungee.listeners.CoreMessageListener;
 import dev.masa.masuitecore.bungee.listeners.LeaveEvent;
 import dev.masa.masuitecore.bungee.listeners.LoginEvent;
-import dev.masa.masuitecore.bungee.listeners.CoreMessageListener;
+import dev.masa.masuitecore.core.Updator;
 import dev.masa.masuitecore.core.configuration.BungeeConfiguration;
+import dev.masa.masuitecore.core.services.DatabaseService;
+import dev.masa.masuitecore.core.services.PlayerService;
 import lombok.Getter;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -17,14 +17,16 @@ import java.io.IOException;
 
 public class MaSuiteCore extends Plugin implements Listener {
 
+    private static MaSuiteCore instance;
     @Getter
     public PlayerService playerService;
+    public BungeeConfiguration config = new BungeeConfiguration();
     @Getter
     private DatabaseService databaseService;
 
-    public BungeeConfiguration config = new BungeeConfiguration();
-
-    private static MaSuiteCore instance;
+    public static MaSuiteCore getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -47,7 +49,7 @@ public class MaSuiteCore extends Plugin implements Listener {
 
         Configuration dbInfo = config.load(null, "config.yml");
 
-        if(!dbInfo.getString("database.name").contains("?")) {
+        if (!dbInfo.getString("database.name").contains("?")) {
             dbInfo.set("database.name", dbInfo.getString("database.name") + "?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8");
             config.save(dbInfo, "config.yml");
         }
@@ -73,9 +75,5 @@ public class MaSuiteCore extends Plugin implements Listener {
         getProxy().getPluginManager().registerListener(this, new LoginEvent(this));
         getProxy().getPluginManager().registerListener(this, new LeaveEvent(this));
         getProxy().getPluginManager().registerListener(this, new CoreMessageListener());
-    }
-
-    public static MaSuiteCore getInstance() {
-        return instance;
     }
 }

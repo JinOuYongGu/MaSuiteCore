@@ -36,8 +36,8 @@ public class MDChat {
     /**
      * Gets a TextComponent from a message
      *
-     * @param message   A legacy or B+ formatted message
-     * @param links Whether or not to add links to message
+     * @param message A legacy or B+ formatted message
+     * @param links   Whether or not to add links to message
      * @return Newly created TextComponent
      */
     public static TextComponent getMessageFromString(String message, boolean links) {
@@ -54,24 +54,24 @@ public class MDChat {
         Queue<String> urls = new LinkedList<>();
         String[] noUrlParts;
 
-        if(links) {
+        if (links) {
             //Extract urls from message
             Matcher matcher = URL_PATTERN.matcher(message);
             //Put all urls on a Queue to be re-added later
-            while (matcher.find())
+            while (matcher.find()) {
                 urls.add(matcher.group());
+            }
 
             //Split message into parts without urls
             noUrlParts = URL_PATTERN.split(message);
-        }
-        else{
+        } else {
             //if no links should be parsed, just throw in the message as it is
             noUrlParts = new String[]{message};
         }
 
         BaseComponent last = new TextComponent();
         // Iterate through no Url message parts
-        for(String noUrlPart: noUrlParts) {
+        for (String noUrlPart : noUrlParts) {
             // More efficient conversion using split, as opposed to iterating over every character
             String[] parts = (" " + noUrlPart).split("" + ChatColor.COLOR_CHAR);
             for (String part : parts) {
@@ -122,10 +122,10 @@ public class MDChat {
                 }
             }
             //If a url is left in the list, it will be added
-            if(!urls.isEmpty()) {
+            if (!urls.isEmpty()) {
                 BaseComponent urlComponent = new TextComponent(urls.peek());
                 //Continue format of last part
-                if(last != null) {
+                if (last != null) {
                     urlComponent.setColor(last.getColor());
                     urlComponent.setBold(last.isBold());
                     urlComponent.setItalic(last.isItalic());

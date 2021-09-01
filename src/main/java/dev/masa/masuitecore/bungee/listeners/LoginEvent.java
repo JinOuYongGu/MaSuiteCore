@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginEvent implements Listener {
 
-    private MaSuiteCore plugin;
+    private final MaSuiteCore plugin;
 
     public LoginEvent(MaSuiteCore plugin) {
         this.plugin = plugin;
@@ -29,7 +29,7 @@ public class LoginEvent implements Listener {
                     e.getPlayer().setDisplayName(msp.getNickname());
                 }
                 // Update username if it has changed
-                if(!e.getPlayer().getName().equals(msp.getUsername())){
+                if (!e.getPlayer().getName().equals(msp.getUsername())) {
                     msp.setUsername(e.getPlayer().getName());
                     plugin.playerService.updatePlayer(msp);
                 }

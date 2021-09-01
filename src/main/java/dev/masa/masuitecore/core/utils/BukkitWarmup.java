@@ -6,10 +6,9 @@ import org.bukkit.scheduler.BukkitTask;
 
 public abstract class BukkitWarmup {
 
-    private int time;
-
-    private BukkitTask task;
     protected final Plugin plugin;
+    private int time;
+    private BukkitTask task;
 
     protected BukkitWarmup(int time, Plugin plugin) {
         this.time = time;

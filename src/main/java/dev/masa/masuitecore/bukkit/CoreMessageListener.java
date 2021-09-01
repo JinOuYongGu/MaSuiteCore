@@ -10,31 +10,32 @@ import java.util.UUID;
 
 public class CoreMessageListener implements PluginMessageListener {
 
-    private MaSuiteCore plugin;
+    private final MaSuiteCore plugin;
 
     CoreMessageListener(MaSuiteCore p) {
         plugin = p;
     }
 
+    @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        if (!channel.equals("BungeeCord")) {
+        if (!"BungeeCord".equals(channel)) {
             return;
         }
         DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
 
-        String subchannel = null;
+        String subchannel;
         try {
             subchannel = in.readUTF();
-            if (subchannel.equals("MaSuiteCore")) {
+            if ("MaSuiteCore".equals(subchannel)) {
                 String childchannel = in.readUTF();
-                if (childchannel.equals("AddPlayer")) {
+                if ("AddPlayer".equals(childchannel)) {
                     MaSuiteCore.onlinePlayers.add(in.readUTF());
                 }
-                if (childchannel.equals("RemovePlayer")) {
+                if ("RemovePlayer".equals(childchannel)) {
                     MaSuiteCore.onlinePlayers.remove(in.readUTF());
                 }
-                if(childchannel.equals("ApplyCooldown")) {
-                    plugin.cooldownService.applyCooldown(in.readUTF(), UUID.fromString(in.readUTF()));
+                if ("ApplyCooldown".equals(childchannel)) {
+                    MaSuiteCore.cooldownService.applyCooldown(in.readUTF(), UUID.fromString(in.readUTF()));
                 }
             }
 

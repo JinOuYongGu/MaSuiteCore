@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class LeaveEvent implements Listener {
 
-    private MaSuiteCore plugin;
+    private final MaSuiteCore plugin;
 
     public LeaveEvent(MaSuiteCore plugin) {
         this.plugin = plugin;

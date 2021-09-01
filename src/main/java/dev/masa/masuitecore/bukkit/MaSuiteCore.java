@@ -13,16 +13,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Masa
+ */
 public class MaSuiteCore extends JavaPlugin implements Listener {
-
-    public BukkitConfiguration config = new BukkitConfiguration();
-    public Formator formator = new Formator();
 
     public static CooldownService cooldownService = new CooldownService();
     public static WarmupService warmupService;
     public static List<String> onlinePlayers = new ArrayList<>();
-
     private static MaSuiteCore instance;
+    public BukkitConfiguration config = new BukkitConfiguration();
+    public Formator formator = new Formator();
+
+    public static MaSuiteCore getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -51,10 +56,6 @@ public class MaSuiteCore extends JavaPlugin implements Listener {
     private void registerListeners() {
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new CoreMessageListener(this));
-    }
-
-    public static MaSuiteCore getInstance() {
-        return instance;
     }
 
 }

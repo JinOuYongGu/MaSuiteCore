@@ -8,7 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public class WarmupService implements Listener {
@@ -16,7 +17,7 @@ public class WarmupService implements Listener {
     public HashMap<UUID, String> warmups = new HashMap<>();
     public HashMap<String, Integer> warmupTimes = new HashMap<>();
 
-    private MaSuiteCore plugin;
+    private final MaSuiteCore plugin;
 
     public WarmupService(MaSuiteCore plugin) {
         this.plugin = plugin;
@@ -33,7 +34,7 @@ public class WarmupService implements Listener {
     public void applyWarmup(Player player, String bypassPermission, String type, Consumer<Boolean> callback) {
         int warmupTime = 0;
 
-        if(this.warmupTimes.get(type) != null) {
+        if (this.warmupTimes.get(type) != null) {
             warmupTime = this.warmupTimes.get(type);
         }
 

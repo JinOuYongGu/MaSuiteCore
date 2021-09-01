@@ -8,6 +8,7 @@ public class MaSuiteCoreBukkitAPI {
 
     /**
      * Get the MaSuiteCore's Bukkit instance
+     *
      * @return returns MaSuiteCore Bukkit instance
      */
     public static MaSuiteCore getCore() {
@@ -16,6 +17,7 @@ public class MaSuiteCoreBukkitAPI {
 
     /**
      * Get the warmup service
+     *
      * @return returns warmup service
      */
     public WarmupService getWarmupService() {
@@ -25,6 +27,7 @@ public class MaSuiteCoreBukkitAPI {
 
     /**
      * Get the cooldown service
+     *
      * @return returns cooldown service
      */
     public CooldownService getCooldownService() {
